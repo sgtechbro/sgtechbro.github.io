@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sgtechbro</title>
+<style>
+  :root {
+    --bg: #0c0f0a;
+    --fg: #ffc600;
+    --fg-dim: #aaaaaa;
+    --amber: #aaaaaa;
+    --border: #555555;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.6;
+  }
+
+  body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* subtle scanline effect */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,255,100,0.02) 3px,
+      rgba(0,0,0,0) 4px
+    );
+    z-index: 1;
+  }
+
+  header {
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+  }
+
+  .prompt {
+    color: var(--fg-dim);
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin: 8px 0 4px;
+    color: var(--fg);
+    letter-spacing: 1px;
+  }
+
+  h1::before {
+    content: "> ";
+    color: var(--amber);
+  }
+
+  .subtitle {
+    color: var(--fg-dim);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 9px;
+    height: 1em;
+    background: var(--fg);
+    vertical-align: text-bottom;
+    margin-left: 4px;
+    animation: blink 1s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  section {
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    color: var(--amber);
+    text-transform: lowercase;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+  }
+
+  h2::before {
+    content: "$ ";
+    color: var(--fg-dim);
+  }
+
+  .bio p {
+    margin: 0 0 12px;
+  }
+
+  .projects {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .project {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    background: rgba(31, 156, 63, 0.04);
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .project:hover {
+    background: rgba(31, 156, 63, 0.1);
+    border-color: var(--fg);
+  }
+
+  .project-name {
+    font-weight: bold;
+    color: var(--fg);
+    font-size: 1.05rem;
+  }
+
+  .project-name a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .project-name a:hover {
+    text-decoration: underline;
+    color: var(--amber);
+  }
+
+  .project-desc {
+    color: var(--fg-dim);
+    margin: 6px 0 0;
+    font-size: 0.92rem;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--amber);
+    border: 1px solid var(--amber);
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  footer {
+    border-top: 1px dashed var(--border);
+    padding-top: 16px;
+    color: var(--fg-dim);
+    font-size: 0.85rem;
+  }
+
+  a {
+    color: var(--fg);
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <span class="prompt">guest@sgtechbro:~$ whoami</span>
+    <h1>sgtechbro<span class="cursor"></span></h1>
+    <p class="subtitle">things i consumed lots of llm tokens to make</p>
+  </header>
+
+  <section class="bio">
+    <h2>about</h2>
+    <p>learning how to tech. crypto &amp; ai native.</p>
+    <p>co-founded a <a href="https://grapplemax.sg" target="_blank" rel="noopener">wrestling school</a> when i was much younger.</p>
+  </section>
+
+  <section class="work">
+    <h2>projects</h2>
+    <ul class="projects">
+
+      <!--
+        ADD MORE PROJECTS BY COPYING A BLOCK LIKE THIS:
+
+        <li class="project">
+          <div class="project-name"><a href="https://your-link-here.com" target="_blank" rel="noopener">project name</a><span class="tag">status</span></div>
+          <p class="project-desc">one or two lines describing what it does and why it's trash/great.</p>
+        </li>
+      -->
+
+      <li class="project">
+        <div class="project-name"><a href="#" target="_blank" rel="noopener">time to buy btc?</a></div>
+        <p class="project-desc">identify generational entry on bitcoin with this quick &amp; dirty checklist.</p>
+      </li>
+
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; <span id="year"></span> sgtechbro</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
